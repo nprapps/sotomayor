@@ -86,15 +86,12 @@ $(document).ready(function() {
     	 * Determine whether to shift to the next slide
     	 * with audio, or without audio.
     	 */
-    	console.log('goto_slide(' + id + ')');
     	active_slide = Number(id);
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
             if (slideshow_data[id] != undefined) {
-//            	console.log('advance cue to ' + slideshow_data[id]['cue_start']);
 				$player.jPlayer('pause', slideshow_data[id]['cue_start']);
 			} else if (id == (num_slides - 1)) {
-//            	console.log('advance cue to ' + audio_length);
 				$player.jPlayer('pause', audio_length);
 			}
         } else {
@@ -108,7 +105,6 @@ $(document).ready(function() {
         /*
          * Scroll horizontally to the correct slide position.
          */
-		console.log('scroll_to_slide(' + id + ')');
         slide_list_toggle('close');
 
         $.smoothScroll({
@@ -129,7 +125,6 @@ $(document).ready(function() {
         /*
          * Play a slide at the correct audio cue.
          */
-//    	console.log('play_slide(' + id + ')');
         if (audio_supported) {
             $player.jPlayer('play', slideshow_data[id]['cue_start']);
         } else {
