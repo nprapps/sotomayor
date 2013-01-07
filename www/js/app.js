@@ -83,6 +83,7 @@ $(document).ready(function() {
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
             if (slideshow_data[id] != undefined) {
+                console.log(slideshow_data[id]['cue']);
 				$player.jPlayer('pause', slideshow_data[id]['cue']);
 			} else if (id == (num_slides - 1)) {
 				$player.jPlayer('pause', audio_length);
