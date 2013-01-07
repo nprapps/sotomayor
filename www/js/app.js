@@ -90,7 +90,7 @@ $(document).ready(function() {
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
             if (slideshow_data[id] != undefined) {
-				$player.jPlayer('pause', slideshow_data[id]['cue_start']);
+				$player.jPlayer('pause', slideshow_data[id]['cue']);
 			} else if (id == (num_slides - 1)) {
 				$player.jPlayer('pause', audio_length);
 			}
@@ -126,7 +126,7 @@ $(document).ready(function() {
          * Play a slide at the correct audio cue.
          */
         if (audio_supported) {
-            $player.jPlayer('play', slideshow_data[id]['cue_start']);
+            $player.jPlayer('play', slideshow_data[id]['cue']);
         } else {
             scroll_to_slide(id);
         }
@@ -146,7 +146,7 @@ $(document).ready(function() {
 			$.each(data, function(k, v) {
 				slideshow_data.push(v);
 			
-				var slide_position = (v["cue_start"] / audio_length) * 100;
+				var slide_position = (v["cue"] / audio_length) * 100;
 
 				// Markup for this slide and its entry in the slide nav
 				// via Underscore template / JST
@@ -163,11 +163,6 @@ $(document).ready(function() {
 
                 context['position'] = slide_position;
 
-                if (v['dob'] != '') {
-                    context['dob'] = ap_date(moment(v['dob'], 'MM DD YYYY'));
-                    context['dod'] = ap_date(moment(v['dod'], 'MM DD YYYY'));
-                }
-                
                 slide_output += JST.slide(context);
 				audio_output += JST.slidenav(context);
 				browse_output += JST.browse(context);
@@ -176,19 +171,20 @@ $(document).ready(function() {
 				num_slides++;
 				
                 if (audio_supported) {
-                	var cue_start = v["cue_start"];
+                	var cue = v["cue"];
+
                 	if (k == 0) {
-                		cue_start += 1;
+                		cue += 1;
                 	}
+
                     // Popcorn cuepoint for this slide
                     pop.code({
-                        start: cue_start,
-                        end: cue_start + .5,
-                        onStart: function( options ) {         
-                            scroll_to_slide(k+1); 
+                        start: cue,
+                        end: cue + .5,
+                        onStart: function(options) {         
+                            scroll_to_slide(k + 1); 
                             return false;
-                        },
-                        onEnd: function( options ) {}
+                        }
                     });
                 }
 			});
@@ -206,7 +202,7 @@ $(document).ready(function() {
 			$('#panelend').attr('id','panel' + end_id);
 			slideshow_data.push({
 				id: end_id,
-				cue_start: end_cue
+				cue: end_cue
 			});
 
 			if (audio_supported) {
