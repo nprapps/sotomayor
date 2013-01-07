@@ -1,7 +1,15 @@
 <div id="panel<%= id %>" class="panel">
-	<div class="panel-bg" style="background-image: url('img/art/<%= photo1_name %>_<%= image_width %>.jpg');"> </div>
+	<div class="panel-bg" style="background-image: url('');"> </div>
+    <% if (photo1_name) { %>
+    <img src="img/art/<%= photo1_name %>_480.jpg" />
+    <% } %>
+    <% if (photo2_name) { %>
+    <img src="img/art/<%= photo2_name %>_480.jpg" />
+    <% } %>
+    <% if (text) { %>
     <div class="panel-description">
         <p class="desc"><%= text %></p>
     </div>
+    <% } %>
 </div>
 
