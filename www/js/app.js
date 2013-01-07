@@ -40,12 +40,9 @@ $(document).ready(function() {
         $player.jPlayer({
             ready: function () {
                 $(this).jPlayer('setMedia', {
-                    mp3: "narration.mp3",
+                    mp3: "http://stage-apps.npr.org/sotomayor/narration.mp3",
                     //TKTK oga: "http://apps.npr.org/music-memoriam-2012/audio/artists2012.ogg"
                 }).jPlayer("pause");
-            },
-            play: function() { // To avoid both jPlayers playing together.
-                $(this).jPlayer("pauseOthers");
             },
             ended: function (event) {
                 $(this).jPlayer("pause");
@@ -86,9 +83,10 @@ $(document).ready(function() {
     	 * Determine whether to shift to the next slide
     	 * with audio, or without audio.
     	 */
-    	active_slide = Number(id);
+    	active_slide = parseInt(id);
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
+            console.log(slideshow_data[id]);
             if (slideshow_data[id] != undefined) {
 				$player.jPlayer('pause', slideshow_data[id]['cue']);
 			} else if (id == (num_slides - 1)) {
@@ -162,8 +160,6 @@ $(document).ready(function() {
                 }
 
                 context['position'] = slide_position;
-
-                console.log(context['photo1_name']);
 
                 slide_output += JST.slide(context);
 				audio_output += JST.slidenav(context);

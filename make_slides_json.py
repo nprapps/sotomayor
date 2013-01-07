@@ -15,7 +15,7 @@ slides = []
 
 for row in rows[1:]:
     slide = {
-        'cue': row[0],
+        'cue': int(row[0]),
         #'photo1_url': row[1],
         'caption1': row[2],
         #'photo2_url': row[3],
@@ -23,7 +23,7 @@ for row in rows[1:]:
         'text': row[5],
         'book_quote': row[6],
         'transcript': row[7],
-        'is_paused': row[8],
+        'is_paused': row[8].lower() == 'true',
         'theme': row[9],
         'notes': row[10],
     }
