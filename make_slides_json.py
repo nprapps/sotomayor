@@ -16,21 +16,23 @@ slides = []
 for row in rows[1:]:
     slide = {
         'cue': int(row[0]),
-        #'photo1_url': row[1],
-        'caption1': row[2],
-        #'photo2_url': row[3],
-        'caption2': row[4],
-        'text': row[5],
-        'book_quote': row[6],
-        'transcript': row[7],
-        'is_paused': row[8].lower() == 'true',
-        'chapter': row[9],
-        'notes': row[10],
+        #'cue2': int(row[1]),
+        #'cue3': int(row[2]),
+        #'photo1_url': row[3],
+        'caption1': row[4],
+        #'photo2_url': row[5],
+        'caption2': row[6],
+        'text': row[7],
+        'book_quote': row[8],
+        'transcript': row[9],
+        'is_paused': row[10].lower() == 'true',
+        'chapter': row[11],
+        'notes': row[12],
     }
 
     # Extract image_name
-    slide['photo1_name'] = get_photo_name(row[1]) 
-    slide['photo2_name'] = get_photo_name(row[3]) 
+    slide['photo1_name'] = get_photo_name(row[3]) 
+    slide['photo2_name'] = get_photo_name(row[5]) 
 
     slides.append(slide)
 
