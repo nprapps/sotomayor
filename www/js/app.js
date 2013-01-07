@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	/* VARS */
 	var active_slide = 0;
-	var audio_length = 337; // TODO: Pass in dynamically somehow?
+	var audio_length = 671; // TODO: Pass in dynamically somehow?
 	var num_slides = 0;
 	var slideshow_data = [];
 	var pop; // Popcorn element
@@ -40,8 +40,8 @@ $(document).ready(function() {
         $player.jPlayer({
             ready: function () {
                 $(this).jPlayer('setMedia', {
-                    mp3: "http://apps.npr.org/music-memoriam-2012/audio/artists2012.mp3",
-                    oga: "http://apps.npr.org/music-memoriam-2012/audio/artists2012.ogg"
+                    mp3: "narration.mp3",
+                    //TKTK oga: "http://apps.npr.org/music-memoriam-2012/audio/artists2012.ogg"
                 }).jPlayer("pause");
             },
             play: function() { // To avoid both jPlayers playing together.
@@ -51,7 +51,7 @@ $(document).ready(function() {
                 $(this).jPlayer("pause");
             },
             swfPath: "js",
-            supplied: "oga, mp3"
+            supplied: "mp3" // TKTK"oga, mp3"
     //		,errorAlerts:true
         });
         // associate jPlayer with Popcorn
