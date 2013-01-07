@@ -12,9 +12,14 @@
         <p class="caption right"><%= caption2 %></p>
         <% } %>
     <% } %>
-    <% if (text) { %>
+    <% if (text || book_quote) { %>
     <div class="panel-description">
-        <p class="desc"><%= text %></p>
+        <% if (text) { %>
+        <p class="text"><%= text %></p>
+        <% } %>
+        <% if (book_quote) { %>
+        <p class="quote"><%= book_quote %></p>
+        <% } %>
     </div>
     <% } %>
 </div>
