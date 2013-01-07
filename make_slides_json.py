@@ -24,7 +24,7 @@ for row in rows[1:]:
         'book_quote': row[6],
         'transcript': row[7],
         'is_paused': row[8].lower() == 'true',
-        'theme': row[9],
+        'chapter': row[9],
         'notes': row[10],
     }
 

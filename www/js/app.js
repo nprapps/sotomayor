@@ -4,9 +4,9 @@ $(document).ready(function() {
 	var audio_length = 671; // TODO: Pass in dynamically somehow?
 	var num_slides = 0;
 	var slideshow_data = [];
+    var chapters = [];
 	var pop; // Popcorn element
     var audio_supported = !($.browser.msie === true && $.browser.version < 9);
-    var slide_list_open = false;
 
 	/* ELEMENTS */
     var $main_content = $('#main-content');
@@ -20,8 +20,6 @@ $(document).ready(function() {
     var $audio = $('#audio');
 	var $progress = $audio.find('.jp-progress-container');
 	var $player = $('#pop-audio');
-	var $slide_list = $('#list-nav');
-	var $slide_list_end = $('#list-nav-end');
 	var $slide_browse_btn = $('#browse-btn');
 	var $titlecard = $('#panel0');
 	var $panels;
@@ -30,8 +28,6 @@ $(document).ready(function() {
     if (!audio_supported) {
         $audio.hide(); 
     }
-    
-    slide_list_toggle('close');
     
     if (audio_supported) {
         /* 
@@ -86,7 +82,6 @@ $(document).ready(function() {
     	active_slide = parseInt(id);
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
-            console.log(slideshow_data[id]);
             if (slideshow_data[id] != undefined) {
 				$player.jPlayer('pause', slideshow_data[id]['cue']);
 			} else if (id == (num_slides - 1)) {
@@ -103,8 +98,6 @@ $(document).ready(function() {
         /*
          * Scroll horizontally to the correct slide position.
          */
-        slide_list_toggle('close');
-
         $.smoothScroll({
             direction: 'left',
             scrollElement: $s,
@@ -138,6 +131,7 @@ $(document).ready(function() {
 		var audio_output = '';
         var browse_output = '';
         var endlist_output = '';
+        var last_chapter = null;
 
 		$.getJSON('slides.json', function(data) {
 			slideshow_data.push(undefined);
@@ -162,9 +156,14 @@ $(document).ready(function() {
                 context['position'] = slide_position;
 
                 slide_output += JST.slide(context);
-				audio_output += JST.slidenav(context);
-				browse_output += JST.browse(context);
 				endlist_output += JST.endlist(context);
+
+                // Render chapter nav
+                if (context['chapter'] != last_chapter) {
+				    audio_output += JST.slidenav(context);
+
+                    last_chapter = context['chapter'];
+                }
 
 				num_slides++;
 				
@@ -231,41 +230,6 @@ $(document).ready(function() {
                 goto_slide(id);
 			});
 	
-            $slide_nav.find('.slide-nav-item').hover(function() {
-				var id = parseInt($(this).attr('data-id'));
-                $slide_list.find('a[data-id="' + id + '"]').addClass('active');
-            }, function() {
-				var id = parseInt($(this).attr('data-id'));
-                $slide_list.find('a[data-id="' + id + '"]').removeClass('active');
-            });
-
-			$slide_list.append(browse_output);
-
-			$slide_list.append(JST.browse({
-                'id': num_slides - 1,
-                'photo1_name': null
-            }));
-
-            $slide_list.find('a').click(function() {
-				var id = parseInt($(this).attr('data-id'));
-                goto_slide(id);
-                slide_list_toggle('close');
-            });
-
-            $slide_list.find('a').hover(function() {
-				var id = parseInt($(this).attr('data-id'));
-                $slide_nav.find('.slide-nav-item[data-id="' + id + '"]').addClass('active');
-            }, function() {
-				var id = parseInt($(this).attr('data-id'));
-                $slide_nav.find('.slide-nav-item[data-id="' + id + '"]').removeClass('active');
-            });
-
-			$slide_list_end.append(endlist_output);
-            $slide_list_end.find('a.slidelink').click(function() {
-				var id = parseInt($(this).attr('data-id'));
-                goto_slide(id);
-            });
-
             $panels = $slide_wrap.find('.panel');
             $panel_images = $panels.find('.panel-bg');
 
@@ -307,10 +271,6 @@ $(document).ready(function() {
             $('#back-btn').html('&lt;&nbsp;Back');
         }
 		
-		// reset navbar position
-		var navpos = $audio_nav.position;
-		$slide_list.css('top',navpos.top + $audio_nav.height());
-		
 		// reset slide position
 		scroll_to_slide(active_slide);
 	}
@@ -331,27 +291,6 @@ $(document).ready(function() {
 		goto_slide(0);
 	});
 
-	function slide_list_toggle(mode) {
-		if (slide_list_open || mode == 'close') {
-			$slide_list.hide();
-			$slide_browse_btn.removeClass('active');
-			slide_list_open = false;
-		} else if (!slide_list_open || mode == 'open') {
-			$slide_list.show();
-			$slide_browse_btn.addClass('active');
-			slide_list_open = true;
-		}
-	}
-	$slide_browse_btn.on('click', function(e){
-		slide_list_toggle();
-	});
-	$slide_nav.on('mouseenter', function(e){
-		slide_list_toggle('open');
-	});
-	$slide_list.on('mouseleave', function(e){
-		slide_list_toggle('close');
-	});
-	
 	function goto_next_slide() {
 		if (active_slide < (num_slides-1)) {
             var id = active_slide + 1;
