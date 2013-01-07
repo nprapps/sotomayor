@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>{{ project_name }}</title>
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<title>In Memoriam: Musicians And Entertainers Who Died In 2012 : NPR</title> 
+	<meta name="description" content="NPR Music remembers the singers, instrumentalists, songwriters and producers who died in 2012. Explore their musical legacies." />
 
 	<!-- CHARTBEAT -->
     <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
@@ -14,8 +14,8 @@
     <!-- CSS -->
     {{ CSS.push('css/bootstrap.css') }}
     {{ CSS.push('css/bootstrap-responsive.css') }}
-    {% block extra_css %}{% endblock extra_css %}
     {{ CSS.push('less/app.less') }}
+    {% block extra_css %}{% endblock %}
     {{ CSS.render('css/app.min.css') }}
 
     <!-- AD CODE -->
@@ -31,87 +31,31 @@
 	{{ JS.push('js/console.js') }}
 	{{ JS.push('js/lib/jquery-1.8.3.js') }}
     {{ JS.push('js/lib/modernizr.js') }}
-    {{ JS.push('js/responsive-ad.js') }}
-    {% block extra_head_js %}{% endblock extra_head_js %}
+    {% block extra_head_js %}{% endblock %}
     {{ JS.render('js/app-header.min.js') }}
 
-	<script>
-    	AddNamespace('NPR.serverVars');
-	    /* TODO
-		jQuery.extend(NPR.serverVars, {
-	        "storyId": "139482413",
-	        "serverType": "prod",
-	        "DFPtarget": "\/news_election_results;storyid=139482413",
-	        "DFPuserver": "u.npr.org",
-	        "DFPserver": "ad.doubleclick.net",
-	        "DFPnetwork": "n6735",
-	        "DFPsite": "NPR",
-	        "DFPmobile": "NPR"
-	    });
-		*/
-	</script>
-
-	<!-- TODO
-	<meta property="og:title" content="Election 2012: Live Coverage From NPR News" />
-	<meta property="og:url" content="http://elections2012.npr.org/" />
+	<meta property="og:title" content="NPR Music Presents: In Memoriam 2012" />
+	<meta property="og:url" content="http://apps.npr.org/music-memoriam-2012" />
 	<meta property="og:type" content="article" />
-	<meta property="og:description" content="Follow the latest results, get breaking news and analysis, and listen to our live special broadcast." />
-	<meta property="og:image" content="http://media.npr.org/news/specials/2012/elections/election-promo_sq.gif" />
+	<meta property="og:description" content="NPR Music remembers the singers, instrumentalists, songwriters and personalities who died in 2012. Explore their musical legacies." />
+	<meta property="og:image" content="http://media.npr.org/assets/img/2012/12/20/in-memoriam-promo_sq.png" />
 	<meta property="og:site_name" content="NPR.org" />
 	<meta property="fb:app_id" content="138837436154588" />
-	-->
 
     {% block extra_head %}
-    {% endblock extra_head %}
+    {% endblock %}
 </head>
-<body>
-	{% block outer_content %}
+<body id="top">
     
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-<!--          <div class="nav-collapse collapse"> -->
-            <ul class="nav">
-              <li class="npr"><a href="http://npr.org">NPR</a></li>
-              <li class="news"><a href="http://www.npr.org/sections/news/">News</a></li>
-              <li class="music"><a href="http://www.npr.org/music/">Music</a></li>
-              <li class="donate"><a href="http://www.npr.org/stations/donate/">Donate</a></li>
-            </ul>
-<!--          ></div> -->
-        </div>
-      </div>
+    <div id="main-content">
+
+                {% block content %}
+                {% endblock content %}
+                
     </div>
 
-
-    <div class="container the-goods">
-        <div class="row">
-            <div class="span8">
-                {% block content %}
-                <h1>{{ project_name }}</h1>
-                App content goes here.
-                {% endblock content %}
-            </div>
-            <div class="span4">
-                <!-- START 300X250 AD -->
-                <div class="adwrapper"><div class="sponsor300">
-				<!-- DFP AD MANAGER -->
-				<script type="text/javascript">
-				<!--
-					try{
-						DFP.renderLocation(0);
-					} catch(e) {
-						NPR.messaging.warning('Problem fetching/rendering ad server code.', 'DFP.renderlocation', NPR.messaging.constants.SPONSORSHIP_ERROR);
-					}
-				// -->
-				</script>                  
-				<!-- END UNDERWRITING -->
-				<p class="left">NPR thanks our sponsors</p>
-				<p class="right"><a href="http://www.npr.org/about/place/corpsupport/">Become an NPR Sponsor </a></p>
-				</div></div>
-				<!-- END 300X250 AD --> 
-            </div>
-        </div>
         
+    <div class="container">
         <div id="footer" class="row">
             <div class="span12">
             	<ul class="bottomlist">
@@ -129,25 +73,27 @@
         </div>
         
     </div>
-
-	{% endblock outer_content %}
     
 	{{ JS.push('js/lib/html5.js') }}
 	{{ JS.push('js/lib/underscore.js') }}
     {{ JS.push('js/lib/moment.js') }}
     {{ JS.push('js/lib/bootstrap.js') }}
-    {% block extra_foot_js %}{% endblock extra_foot_js %}
+    {% block extra_foot_js %}{% endblock %}
     {{ JS.push('js/templates.js') }}
     {{ JS.push('js/app.js') }}
     {{ JS.render('js/app-footer.min.js') }}
 
     {% block extra_foot %}
-    {% endblock extra_foot %}
+    {% endblock %}
 
     <!-- GOOGLE ANALYTICS -->
 	<script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-5828686-4']);
+		_gaq.push(['_setCustomVar',1,'BC','Music',3]);
+		_gaq.push(['_setCustomVar',2,'Topics','1039,1106,1143,1147',3]);//Music: 1039, Photography: 1143, Multimedia: 1147, Music News: 1106
+		_gaq.push(['_setCustomVar',4,'Org ID', '1',3]);
+		_gaq.push(['_setCustomVar',5,'Page Types','Interactive' ,3]);
         _gaq.push(['_trackPageview']);
         (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -155,7 +101,6 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
-
 
     <!-- CHARTBEAT -->
     <script type="text/javascript">
