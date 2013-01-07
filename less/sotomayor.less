@@ -169,6 +169,40 @@ body { background-color: @slide-bg-color }
 	position: relative;
 	overflow: hidden;
 	float: left;
+
+    .art {
+        float: left;
+    }
+
+    .art.full {
+        width: 80%;
+        height: auto;
+    }
+
+    .art.left {
+        width: 50%;
+        height: auto;
+    }
+
+    .art.right {
+        width: 50%;
+        height: auto;
+    }
+
+    .caption {
+        display: block;
+        position: absolute;
+        width: 50%;
+        bottom: 100px;
+    }
+
+    .caption.left {
+        left: 0;
+    }
+
+    .caption.right {
+        left: 50%;
+    }
 }
 .panel-bg {
 	width: 100%;
@@ -217,6 +251,10 @@ body { background-color: @slide-bg-color }
 #panel16 .panel-description,
 #panel17 .panel-description,
 #panel20 .panel-description { left: auto; right: 0; }
+
+
+
+
 
 
 // TITLE AND CLOSING SCREENS

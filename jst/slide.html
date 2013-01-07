@@ -3,13 +3,13 @@
     <% if (photo1_name) { %>
     <img class="art <% if (photo2_name) { %>left<% } else{ %>full<% } %>" src="img/art/<%= photo1_name %>_480.jpg" />
         <% if (caption1) { %>
-        <p class="caption1"><%= caption1 %></p>
+        <p class="caption left"><%= caption1 %></p>
         <% } %>
     <% } %>
     <% if (photo2_name) { %>
     <img class="art right" src="img/art/<%= photo2_name %>_480.jpg" />
         <% if (caption2) { %>
-        <p class="caption2"><%= caption1 %></p>
+        <p class="caption right"><%= caption2 %></p>
         <% } %>
     <% } %>
     <% if (text) { %>
