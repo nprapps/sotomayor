@@ -157,7 +157,7 @@ body { background-color: @slide-bg-color }
 
 // SLIDE NAV
 .slide-list {
-	.browse-artist { 
+	.browse-slide { 
 		width: 25%; 
 		float: left; 
 		clear: right;
@@ -198,7 +198,7 @@ body { background-color: @slide-bg-color }
 	border-top: none;
 	margin-top: -1px;
 	
-	.browse-artist.browse26 { width: 75%; }
+	.browse-slide.browse26 { width: 75%; }
 }
 #list-nav-end {
 	margin-bottom: 20px;
@@ -262,8 +262,6 @@ body { background-color: @slide-bg-color }
 	h2 { margin-bottom: 10px; color: #fff; font-weight: normal; font-size: 48px; line-height: 1.1; }
 	p { font-size: 18px; line-height: 1.5; font-family: Georgia, serif; font-style: italic; }
 	.desc { margin-bottom: 20px; }
-	.npr-obit, .npr-artist { font: normal normal 14px Arial, Helvetica, sans-serif; color: #aaa; }
-	.npr-obit + .npr-artist { margin-top: -5px; }
 	.now-playing, .photo-credit { font: normal normal 12px Arial, Helvetica, sans-serif; color: #aaa; }
 	.now-playing { margin-top: 20px; margin-bottom: 5px; }
 	.photo-credit { margin-bottom: 0; }
@@ -324,7 +322,7 @@ body { background-color: @slide-bg-color }
 #list-nav-end {
 	margin-bottom: 20px;
 
-	.browse-artist { 
+	.browse-slide { 
 		width: 25%; 
 		float: left; 
 		height: 60px;
@@ -332,7 +330,7 @@ body { background-color: @slide-bg-color }
 		border-top: 1px solid @nav-button-color;
 		padding: 10px 0;
 	}
-	.browse-artist:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	.browse-slide:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	img { 
 		float: left;
 		width: 60px;
@@ -362,10 +360,10 @@ body { background-color: @slide-bg-color }
 		h2 { font-size: 48px; }
 		p { font-size: 18px; }
 	}
-	#list-nav .browse-artist  { width: 20%; }
-	#list-nav .browse-artist.browse26 { width: 100%; float: none; }
+	#list-nav .browse-slide  { width: 20%; }
+	#list-nav .browse-slide.browse26 { width: 100%; float: none; }
     #browse-btn { display: none; }
-	#list-nav-end .browse-artist { height: 55px; }
+	#list-nav-end .browse-slide { height: 55px; }
 }
 @media (max-width: 979px) {
 	.jp-audio { width: 271px; }
@@ -377,11 +375,11 @@ body { background-color: @slide-bg-color }
 	}
 	
 	#list-nav {
-		.browse-artist  { width: 33%; }
-		.browse-artist:nth-child(3n+3) { width: 34%; }
-		.browse-artist.browse26 { width: 67%; }
+		.browse-slide  { width: 33%; }
+		.browse-slide:nth-child(3n+3) { width: 34%; }
+		.browse-slide.browse26 { width: 67%; }
 	}
-	#list-nav-end .browse-artist { width: 33%; float: left; }
+	#list-nav-end .browse-slide { width: 33%; float: left; }
 }
 @media (max-width: 767px) {
 	#audio { width: 101px; }
@@ -401,10 +399,10 @@ body { background-color: @slide-bg-color }
 	#list-nav { 
 		img { display: none; }
 		a { padding-top: 15px; padding-bottom: 15px; border-right: 1px solid @nav-border; }
-		.browse-artist:nth-child(3n+3) a { border-right: none; }
-		.browse-artist.browse26 a { border-right: none; }
+		.browse-slide:nth-child(3n+3) a { border-right: none; }
+		.browse-slide.browse26 a { border-right: none; }
 	}
-	#list-nav-end .browse-artist { height: 80px; }
+	#list-nav-end .browse-slide { height: 80px; }
 }
 @media (max-width: 640px) {
 	#title-button { 
@@ -422,12 +420,12 @@ body { background-color: @slide-bg-color }
 		p.npr-obit { margin-top: 10px; }
 	}
 	#list-nav {
-		.browse-artist, .browse-artist.browse26, .browse-artist:nth-child(3n+3)  { width: 50%; }
+		.browse-slide, .browse-slide.browse26, .browse-slide:nth-child(3n+3)  { width: 50%; }
 		h2 { font-size: 12px; }
-		.browse-artist a { border-right: none; }
-		.browse-artist:nth-child(odd) a { border-right: 1px solid @nav-border; }
+		.browse-slide a { border-right: none; }
+		.browse-slide:nth-child(odd) a { border-right: 1px solid @nav-border; }
 	}
-	#list-nav-end .browse-artist { width: 50%; float: left; height: 60px; }
+	#list-nav-end .browse-slide { width: 50%; float: left; height: 60px; }
 }
 @media (max-width: 480px) {
 	#audio-navbar { padding-left: 0; }
@@ -445,11 +443,11 @@ body { background-color: @slide-bg-color }
 		p.dates, p.now-playing { display: block; padding-right: 0; border-right: none; }
 		p.desc, p.photo-credit { display: block; }
 	}
-	#list-nav-end .browse-artist { width: 100%; float: none; height: auto; }
+	#list-nav-end .browse-slide { width: 100%; float: none; height: auto; }
 	
 	#list-nav {
 		width: 300px; left: 10px;
 		
-		.browse-artist a { display: table-cell; width: 150px; vertical-align: middle; height: 40px; padding-top: 0; padding-bottom: 0; }
+		.browse-slide a { display: table-cell; width: 150px; vertical-align: middle; height: 40px; padding-top: 0; padding-bottom: 0; }
 	}	
 }
