@@ -45,7 +45,6 @@ $(document).ready(function() {
             },
             swfPath: "js",
             supplied: "mp3" // TKTK"oga, mp3"
-    //		,errorAlerts:true
         });
         // associate jPlayer with Popcorn
         pop = Popcorn('#jp_audio_0');
