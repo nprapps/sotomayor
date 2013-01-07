@@ -163,6 +163,8 @@ $(document).ready(function() {
 
                 context['position'] = slide_position;
 
+                console.log(context['photo1_name']);
+
                 slide_output += JST.slide(context);
 				audio_output += JST.slidenav(context);
 				browse_output += JST.browse(context);
@@ -245,9 +247,7 @@ $(document).ready(function() {
 
 			$slide_list.append(JST.browse({
                 'id': num_slides - 1,
-                'image_name': null,
-                'artist_first_name': '',
-                'artist_last_name': 'Index & Credits'
+                'photo1_name': null
             }));
 
             $slide_list.find('a').click(function() {

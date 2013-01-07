@@ -15,7 +15,7 @@ slides = []
 
 for row in rows[1:]:
     slide = {
-        'cue': [row[1], row[0]],
+        'cue': row[0],
         #'photo1_url': row[1],
         'caption1': row[2],
         #'photo2_url': row[3],
