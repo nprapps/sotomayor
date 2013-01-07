@@ -13,7 +13,8 @@ with open('data/slides.csv') as f:
 
 slides = []
 
-for row in rows[1:]:
+# Skip header AND opening slide
+for row in rows[2:]:
     slide = {
         'cue': int(row[0]),
         #'cue2': int(row[1]),
