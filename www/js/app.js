@@ -44,6 +44,8 @@ $(document).ready(function() {
                     mp3: "http://stage-apps.npr.org/sotomayor/narration.mp3",
                     //TKTK oga: "http://apps.npr.org/music-memoriam-2012/audio/artists2012.ogg"
                 }).jPlayer("pause");
+
+                load_slideshow_data();
             },
             ended: function (event) {
                 $(this).jPlayer("pause");
@@ -194,12 +196,12 @@ $(document).ready(function() {
             // Append "credits chapter"
 			browse_output += JST.browse({
                 'id': num_slides + 1,
-                'chapter': 'Credits'
+                'chapter': 'Index & Credits'
             });
 
             audio_output += JST.slidenav({
                 'id': num_slides + 1,
-                'chapter': 'Credits'
+                'chapter': 'Index & Credits'
             });
 
 			$titlecard.after(slide_output);
@@ -371,11 +373,4 @@ $(document).ready(function() {
         }
         return false;
     });
-
-
-	/* 
-	 * INIT
-	 */
-	load_slideshow_data();
-
 });
