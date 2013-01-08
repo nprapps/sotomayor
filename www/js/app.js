@@ -160,12 +160,12 @@ $(document).ready(function() {
                 context['position'] = slide_position;
 
                 slide_output += JST.slide(context);
-				endlist_output += JST.endlist(context);
 
                 // Render chapter nav
                 if (context['chapter'] != last_chapter) {
                     browse_output += JST.browse(context);
 				    audio_output += JST.slidenav(context);
+				    endlist_output += JST.endlist(context);
 
                     last_chapter = context['chapter'];
                 }
@@ -190,9 +190,22 @@ $(document).ready(function() {
                     });
                 }
 			});
-			
+
+            // Append "credits chapter"
+			browse_output += JST.browse({
+                'id': num_slides + 1,
+                'chapter': 'Credits'
+            });
+
+            audio_output += JST.slidenav({
+                'id': num_slides + 1,
+                'chapter': 'Credits'
+            });
+
 			$titlecard.after(slide_output);
 			$('#send').before(audio_output);
+			$slide_list.append(browse_output);
+            $slide_list_end.append(endlist_output);
 			
 			num_slides += 2; // because we have both a title slide and a closing slide
 			// rename the closing slides with the correct ID numbers
@@ -235,15 +248,6 @@ $(document).ready(function() {
                 goto_slide(id);
 			});
 
-            console.log($slide_list);
-			
-			$slide_list.append(browse_output);
-
-			$slide_list.append(JST.browse({
-                'id': num_slides - 1,
-                'chapter': 'Index & Credits'
-            }));
-			
             $slide_list.find('a').click(function() {
 				var id = parseInt($(this).attr('data-id'));
                 goto_slide(id);
