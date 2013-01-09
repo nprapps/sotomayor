@@ -18,11 +18,8 @@ for path in glob('art/*.png'):
 
     original = Image.open(path)
 
-    if original.mode == 'LA':
-        original = original.convert('L')
-
     for width in widths:
-        output_path = os.path.join(output_dir, '%s_%i.jpg' % (name, width)) 
+        output_path = os.path.join(output_dir, '%s_%i.png' % (name, width)) 
 
         width_pct = width / float(original.size[0])
         height = int(float(original.size[1] * width_pct))

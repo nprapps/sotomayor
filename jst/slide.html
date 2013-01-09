@@ -1,13 +1,13 @@
 <div id="panel<%= id %>" class="panel">
 	<div class="panel-bg" style="background-image: url('');"> </div>
     <% if (photo1_name) { %>
-    <img class="art <% if (photo2_name) { %>left<% } else{ %>full<% } %>" src="img/art/<%= photo1_name %>_<%= image_width %>.jpg" />
+    <img class="art <% if (photo2_name) { %>left<% } else{ %>full<% } %>" src="img/art/<%= photo1_name %>_<%= image_width %>.png" />
         <% if (caption1) { %>
         <p class="caption left"><%= caption1 %></p>
         <% } %>
     <% } %>
     <% if (photo2_name) { %>
-    <img class="art right" src="img/art/<%= photo2_name %>_<%= image_width %>.jpg" />
+    <img class="art right" src="img/art/<%= photo2_name %>_<%= image_width %>.png" />
         <% if (caption2) { %>
         <p class="caption right"><%= caption2 %></p>
         <% } %>
