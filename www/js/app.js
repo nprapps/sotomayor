@@ -55,6 +55,8 @@ $(document).ready(function() {
         });
         // associate jPlayer with Popcorn
         pop = Popcorn('#jp_audio_0');
+    } else {
+        load_slideshow_data();
     }
 
     function ap_date(mmnt) {
