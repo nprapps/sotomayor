@@ -109,11 +109,7 @@ $(document).ready(function() {
         $.smoothScroll({
             direction: 'left',
             scrollElement: $s,
-            scrollTarget: '#panel' + id,
-            afterScroll: function() {
-                $slide_nav.find('li').removeClass('active');
-                $slide_nav.find('#s' + id).addClass('active');
-            }
+            scrollTarget: '#panel' + id
         });
         active_slide = id;
 
@@ -146,8 +142,6 @@ $(document).ready(function() {
 			$.each(data, function(k, v) {
 				slideshow_data.push(v);
 			
-				var slide_position = (v["cue"] / audio_length) * 100;
-
 				// Markup for this slide and its entry in the slide nav
 				// via Underscore template / JST
                 var context = v;
@@ -160,8 +154,6 @@ $(document).ready(function() {
                 } else {
                     context['image_width'] = 1200;
                 }
-
-                context['position'] = slide_position;
 
                 slide_output += JST.slide(context);
 
@@ -213,12 +205,11 @@ $(document).ready(function() {
 			
 			num_slides += 2; // because we have both a title slide and a closing slide
 			// rename the closing slides with the correct ID numbers
-			var end_id = num_slides-1;
-			var end_cue = audio_length - 30;
+			var end_id = num_slides - 1;
+			var end_cue = audio_length;
 			$('#send').attr('id','s' + end_id);
-			$('#s' + end_id).attr('data-id', end_id);
-			$('#s' + end_id).css('left',((end_cue / audio_length) * 100) + '%');
 			$('#panelend').attr('id','panel' + end_id);
+
 			slideshow_data.push({
 				id: end_id,
 				cue: end_cue
