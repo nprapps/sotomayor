@@ -42,7 +42,7 @@ $(document).ready(function() {
             ready: function () {
                 $(this).jPlayer('setMedia', {
                     mp3: "http://stage-apps.npr.org/sotomayor/narration.mp3",
-                    //TKTK oga: "http://apps.npr.org/music-memoriam-2012/audio/artists2012.ogg"
+                    oga: "http://stage-apps.npr.org/sotomayor/narration.ogg"
                 }).jPlayer("pause");
 
                 load_slideshow_data();
@@ -51,7 +51,7 @@ $(document).ready(function() {
                 $(this).jPlayer("pause");
             },
             swfPath: "js",
-            supplied: "mp3" // TKTK"oga, mp3"
+            supplied: "oga, mp3"
         });
         // associate jPlayer with Popcorn
         pop = Popcorn('#jp_audio_0');
