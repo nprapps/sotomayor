@@ -212,11 +212,13 @@ def _deploy_to_s3():
     """
     Deploy the gzipped stuff to
     """
-    s3cmd = 's3cmd -P --add-header=Cache-Control:max-age=5 --add-header=Content-encoding:gzip --guess-mime-type --no-preserve --recursive sync gzip/ %s'
+    s3cmd = 's3cmd -P --add-header=Cache-Control:max-age=5 --guess-mime-type --no-preserve --recursive --exclude-from gzip_types.txt sync gzip/ %s'
+    s3cmd_gzip = 's3cmd -P --add-header=Cache-Control:max-age=5 --add-header=Content-encoding:gzip --guess-mime-type --no-preserve --recursive --exclude "*" --include-from gzip_types.txt sync gzip/ %s'
 
     for bucket in env.s3_buckets:
         env.s3_bucket = bucket
         local(s3cmd % ('s3://%(s3_bucket)s/%(deployed_name)s/' % env))
+        local(s3cmd_gzip % ('s3://%(s3_bucket)s/%(deployed_name)s/' % env))
 
 def _gzip_www():
     """
