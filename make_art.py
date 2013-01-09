@@ -18,8 +18,15 @@ for path in glob('art/*.png'):
 
     original = Image.open(path)
 
-    if original.mode == 'LA':
-        original = original.convert('L')
+    # Convert alpha layer to black background
+    # Wisdom from:
+    # http://stackoverflow.com/a/9459208
+    # http://stackoverflow.com/a/1963146
+    if original.mode in ['LA', 'RGBA']:
+        opaque = Image.new('RGB', original.size, (0, 0, 0))
+        opaque.paste(original, mask=original.convert('RGBA').split()[-1])
+
+        original = opaque
 
     for width in widths:
         output_path = os.path.join(output_dir, '%s_%i.jpg' % (name, width)) 
