@@ -23,7 +23,7 @@ for path in glob('art/*.png'):
     # http://stackoverflow.com/a/9459208
     # http://stackoverflow.com/a/1963146
     if original.mode in ['LA', 'RGBA']:
-        opaque = Image.new('RGB', original.size, (0, 0, 0))
+        opaque = Image.new('RGB', original.size, (38, 38, 38))
         opaque.paste(original, mask=original.convert('RGBA').split()[-1])
 
         original = opaque
