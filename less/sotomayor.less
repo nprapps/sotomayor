@@ -220,44 +220,66 @@ body { background-color: @slide-bg-color }
 	position: relative;
 	overflow: hidden;
 	float: left;
-
-    .art {
-        float: left;
-        display: block;
+	
+	.art {
+		width: 100%;
+		height: 100%;
+		margin: auto;
+		position: relative;
+		
+		.art-wrap {
+			height: 80%;
+			width: auto;
+		}
+		
+		img {
+			height: 98%;
+			max-width: none;
+			width: auto;
+			margin: 0 auto;
+			display: block;
+			padding: 1%;
+			background-color: #fff;
+		}
     }
-
+    
     .art.full {
-        width: auto;
-        height: 80%;
-        margin: auto;
-        float: none;
+    	img {
+    	}
     }
-
+    
     .art.left {
-        width: 50%;
-        height: auto;
-    }
+		width: 45%;
+		height: auto;
+		float: left;
 
-    .art.right {
-        width: 50%;
-        height: auto;
+    	img {
+    	}
     }
+    
+    .art .right {
+        width: 45%;
+        height: auto;
+        float: right;
 
+    	img {
+    	}
+    }
+    
     .caption {
         display: block;
         position: absolute;
         width: 50%;
-        bottom: 10px;
-    }
-
-    .caption.left {
-        left: 0;
-    }
-
-    .caption.right {
-        left: 50%;
+        bottom: 0;
     }
 }
+
+/*
+#panel5 {
+	.art.right { height: 80%; width: auto; }
+}
+*/
+
 .panel-bg {
 	width: 100%;
 	height: 100%;
@@ -273,16 +295,37 @@ body { background-color: @slide-bg-color }
 	width: 35%;
 	background: #323232;
 	background: @shade-bg;
-	padding: 15px 20px 25px 20px;
+	padding: 25px 20px 25px 20px;
 	text-decoration: none;
-	position: absolute; bottom: 10%; left: 0;
+	position: absolute; top: 10%; left: 0;
 	text-shadow: @shadow;
 	
 	a { color: #fff; font-weight: bold; }
 	h2 { margin-bottom: 10px; color: #fff; font-weight: normal; font-size: 48px; line-height: 1.1; }
-	p { font-size: 18px; line-height: 1.5; font-family: Georgia, serif; font-style: italic; }
-	.text { margin-bottom: 20px; }
-	.quote { font: normal normal 12px Arial, Helvetica, sans-serif; color: #aaa; }
+	
+	.text { 
+		margin-bottom: 0;
+		font: 16px/1.7 Arial, Helvetica, sans-serif;
+		color: #ddd;
+	}
+	
+	.quote { 
+		font: 20px/1.2 Goergia, serif; 
+		color: grey;
+		padding: 8px 0 0 28px;
+		position: relative;
+		margin-bottom: 0;
+		
+		span {
+			font-size: 50px;
+			display: block;
+			position: absolute;
+			left: -1px;
+			top: -6px;
+			color: #ddd;
+			font-weight: bold;
+		}
+	}
 }
 
 

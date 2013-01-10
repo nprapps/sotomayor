@@ -1,16 +1,24 @@
 <div id="panel<%= id %>" class="panel<% if (photo2_name) { %> two-photo<% } else if (photo1_name && !photo2_name) { %> one-photo<% } %>">
 	<div class="panel-bg" style="background-image: url('');"> </div>
     <% if (photo1_name) { %>
-    <img class="art <% if (photo2_name) { %>left<% } else{ %>full<% } %>" src="img/art/<%= photo1_name %>_<%= image_width %>.jpg" />
+    <div class="art <% if (photo2_name) { %>left<% } else{ %>full<% } %>">
+    	<div class="art-wrap">
+			<img src="img/art/<%= photo1_name %>_<%= image_width %>.jpg" />
+		</div>
         <% if (caption1) { %>
         <p class="caption left"><%= caption1 %></p>
         <% } %>
+    </div>
     <% } %>
     <% if (photo2_name) { %>
-    <img class="art right" src="img/art/<%= photo2_name %>_<%= image_width %>.jpg" />
+    <div class="art right">
+    	<div class="art-wrap">
+			<img src="img/art/<%= photo2_name %>_<%= image_width %>.jpg" />
+		</div>
         <% if (caption2) { %>
         <p class="caption right"><%= caption2 %></p>
         <% } %>
+    </div>
     <% } %>
     <% if (text || book_quote) { %>
     <div class="panel-description">
@@ -18,7 +26,7 @@
         <p class="text"><%= text %></p>
         <% } %>
         <% if (book_quote) { %>
-        <p class="quote"><%= book_quote %></p>
+        <p class="quote"><span>&ldquo;</span><%= book_quote %></p>
         <% } %>
     </div>
     <% } %>
