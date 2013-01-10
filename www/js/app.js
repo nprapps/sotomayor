@@ -27,6 +27,14 @@ $(document).ready(function() {
 	var $titlecard = $('#panel0');
 	var $panels;
 	var $panel_images;
+	var $chapter_backgrounds = [ 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/start.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter1.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter2.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter3.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter4.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter5.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter6.jpg',
+								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter7.jpg' ];
 
     if (!audio_supported) {
         $audio.hide(); 
@@ -83,6 +91,7 @@ $(document).ready(function() {
     }
 
     function goto_slide(id) {
+    	console.log('goto_slide');
     	/*
     	 * Determine whether to shift to the next slide
     	 * with audio, or without audio.

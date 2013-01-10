@@ -204,6 +204,11 @@ body { background-color: @slide-bg-color }
 // SLIDESHOW
 #slideshow { 
 	color: #fff; position: relative; overflow: hidden;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
 }
 #slideshow-wrap {
 	z-index: 999;
@@ -211,18 +216,21 @@ body { background-color: @slide-bg-color }
 	overflow: hidden;
 }
 .panel {
-	background-color: @slide-bg-color;
+//	background-color: @slide-bg-color;
 	position: relative;
 	overflow: hidden;
 	float: left;
 
     .art {
         float: left;
+        display: block;
     }
 
     .art.full {
-        width: 80%;
-        height: auto;
+        width: auto;
+        height: 80%;
+        margin: auto;
+        float: none;
     }
 
     .art.left {
@@ -259,18 +267,7 @@ body { background-color: @slide-bg-color }
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 }
-#panel15 .panel-bg,
-#panel19 .panel-bg,
-#panel20 .panel-bg,
-#panel24 .panel-bg {
-	background-position: 0 0;
-}
-#panel2 .panel-bg {
-	background-position: 50% 30%;
-}
-#panel23 .panel-bg {
-	background-position: 50% 25%;
-}
+
 .panel-description {
 	display: block;
 	width: 35%;
@@ -291,7 +288,7 @@ body { background-color: @slide-bg-color }
 
 
 // TITLE AND CLOSING SCREENS
-.panel-open, .panel-end { 
+.panel-end { 
 	background: @slide-bg-color url('@{img-root}/black_thread.png') repeat;
 	/* Background pattern via Subtle Patterns: http://subtlepatterns.com/black-thread/ */
 }
