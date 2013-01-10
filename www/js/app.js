@@ -312,13 +312,6 @@ $(document).ready(function() {
 		play_slide(1);
 	});
 	
-	$audio_branding.click(function() {
-		if (audio_supported) {
-            $player.jPlayer('stop');
-        }
-		goto_slide(0);
-	});
-	
 	function slide_list_toggle(mode) {
 		if (slide_list_open || mode == 'close') {
 			$slide_list.hide();
