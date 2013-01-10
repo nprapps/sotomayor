@@ -3,6 +3,7 @@
 from glob import glob
 import os
 from shutil import rmtree
+from itertools import chain
 
 from PIL import Image
 
@@ -12,21 +13,14 @@ widths = [120, 480, 979, 1200]
 rmtree(output_dir)
 os.mkdir(output_dir)
 
-for path in glob('art/*.png'):
+for path in chain(glob('art/*.jpg'), glob('art/*.png')):
     filename = os.path.split(path)[-1]
     name = os.path.splitext(filename)[0]
 
     original = Image.open(path)
 
-    # Convert alpha layer to black background
-    # Wisdom from:
-    # http://stackoverflow.com/a/9459208
-    # http://stackoverflow.com/a/1963146
-    if original.mode in ['LA', 'RGBA']:
-        opaque = Image.new('RGB', original.size, (38, 38, 38))
-        opaque.paste(original, mask=original.convert('RGBA').split()[-1])
-
-        original = opaque
+    if original.mode == 'LA':
+        original = original.convert('L')
 
     for width in widths:
         output_path = os.path.join(output_dir, '%s_%i.jpg' % (name, width)) 
