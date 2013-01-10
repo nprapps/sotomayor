@@ -1,10 +1,11 @@
 $(document).ready(function() {
 	/* VARS */
 	var active_slide = 0;
-	var audio_length = 671; // TODO: Pass in dynamically somehow?
+	var audio_length = 686; // TODO: Pass in dynamically somehow?
 	var num_slides = 0;
 	var slideshow_data = [];
     var chapters = [];
+    var current_chapter = '';
 	var pop; // Popcorn element
     var audio_supported = !($.browser.msie === true && $.browser.version < 9);
     var slide_list_open = false;
@@ -107,6 +108,10 @@ $(document).ready(function() {
         } else {
             play_slide(id);
         }
+        
+        //show chapter title in nav
+        current_chapter = slideshow_data[id]['chapter'];
+        $("#chapter-title").text(current_chapter);
 		
         return false; 
     }
@@ -145,9 +150,60 @@ $(document).ready(function() {
         var browse_output = '';
         var endlist_output = '';
         var last_chapter = null;
+        var chapters = [];
 
 		$.getJSON('slides.json', function(data) {
 			slideshow_data.push(undefined);
+            
+            //calculate chapter widths
+            $.each(data, function(k,v) {
+                var context = v;
+                var chapter = {};
+                chapter['id'] = k + 1;
+                if (last_chapter != null) {
+                    if (context['chapter'] != last_chapter['name']) {
+                        chapter['name'] = context['chapter'];
+                        chapter['start'] = context['cue'];
+                        chapter['photo1_name'] = context['photo1_name'];
+                        //write down previous chapter length
+                        last_chapter['length'] = chapter['start'] - last_chapter['start'];
+                        //TODO:kill console.log
+                        // console.log(last_chapter);
+                        //this chapter is now the last chapter
+                        last_chapter = chapter;
+                        chapters.push(chapter);
+                    }
+                } else {
+                    //first chapter
+                    
+                    //TODO:kill console.log
+                    // console.log(context['chapter']);
+                    chapter['name'] = context['chapter'];
+                    chapter['start'] = 0;
+                    chapter['photo1_name'] = context['photo1_name'];
+                    last_chapter = chapter;
+                    chapters.push(chapter);
+                }
+            });
+            //set very last chapter width
+            chapters[chapters.length - 1]['length'] = audio_length - chapters[chapters.length - 1]['start'];
+            
+            //TODO:kill console.log
+            //console.log(chapters); 
+            
+            //Render chapter nav
+            $.each(chapters, function(k,v) {
+                var chapter = v;
+                chapter['width'] = 100 * parseFloat(chapter['length']) / audio_length;
+                //TODO:kill console.log
+                console.log(chapter);
+                browse_output += JST.browse(chapter);
+                audio_output += JST.slidenav(chapter);
+                endlist_output += JST.endlist(chapter);           
+                
+            });
+            
+            
 			$.each(data, function(k, v) {
 				slideshow_data.push(v);
 			
@@ -165,15 +221,6 @@ $(document).ready(function() {
                 }
 
                 slide_output += JST.slide(context);
-
-                // Render chapter nav
-                if (context['chapter'] != last_chapter) {
-                    browse_output += JST.browse(context);
-				    audio_output += JST.slidenav(context);
-				    endlist_output += JST.endlist(context);
-
-                    last_chapter = context['chapter'];
-                }
 
 				num_slides++;
 				
@@ -196,19 +243,21 @@ $(document).ready(function() {
                 }
 			});
 
-            // Append "credits chapter"
-			browse_output += JST.browse({
-                'id': num_slides + 1,
-                'chapter': 'Index & Credits'
-            });
+            // TODO: put index next to nav, not in nav
+            //             // Append "credits chapter"
+            // browse_output += JST.browse({
+            //                 'id': num_slides + 1,
+            //                 'chapter': 'Index & Credits'
+            //             });
 
-            audio_output += JST.slidenav({
-                'id': num_slides + 1,
-                'chapter': 'Index & Credits'
-            });
+            // TODO: change this too?
+            // audio_output += JST.slidenav({
+            //     'id': num_slides + 1,
+            //     'chapter': 'Index & Credits'
+            // });
 
 			$titlecard.after(slide_output);
-			$('#send').before(audio_output);
+			$slide_nav.append(audio_output);
 			$slide_list.append(browse_output);
             $slide_list_end.append(endlist_output);
 			
@@ -250,6 +299,12 @@ $(document).ready(function() {
 			$slide_nav.find('.slide-nav-item').click( function() {
 				var id = parseInt($(this).attr('data-id'));
                 goto_slide(id);
+			});
+            
+			$slide_nav.find('.slide-nav-item').hover(function() {
+                $("#chapter-title").text(this.title);
+			}, function(){
+			    $("#chapter-title").text(current_chapter);
 			});
 
             $slide_list.find('a').click(function() {
