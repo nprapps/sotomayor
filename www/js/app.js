@@ -147,24 +147,28 @@ $(document).ready(function() {
         }
 
     	if (active_slide == 0) {
-			$s.css('background-image', 'url(img/art/start_' + image_width + '.jpg)');
+            image_name = 'start';
 		} else if (active_slide >= 1 && active_slide < 15) {
-			$s.css('background-image', 'url(img/art/chapter1_' + image_width + '.jpg)');
+            image_name = 'chapter1';
 		} else if (active_slide >= 15 && active_slide < 21) {
-			$s.css('background-image', 'url(img/art/chapter2_' + image_width + '.jpg)');
+            image_name = 'chapter2';
 		} else if (active_slide >= 21 && active_slide < 34) {
-			$s.css('background-image', 'url(img/art/chapter3_' + image_width + '.jpg)');
+            image_name = 'chapter3';
 		} else if (active_slide >= 34 && active_slide < 42) {
-			$s.css('background-image', 'url(img/art/chapter4_' + image_width + '.jpg)');
+            image_name = 'chapter4';
 		} else if (active_slide >= 42 && active_slide < 46) {
-			$s.css('background-image', 'url(img/art/chapter5_' + image_width + '.jpg)');
+            image_name = 'chapter5';
 		} else if (active_slide >= 46 && active_slide < 53) {
-			$s.css('background-image', 'url(img/art/chapter6_' + image_width + '.jpg)');
+            image_name = 'chapter6';
 		} else if (active_slide >= 53 && active_slide < 61) {
-			$s.css('background-image', 'url(img/art/chapter7_' + image_width + '.jpg)');
+            image_name = 'chapter7';
 		} else if (active_slide >= 61) {
-			$s.css('background-image', 'url(img/art/chapter7_' + image_width + '.jpg)');
+            image_name = 'chapter7';
     	}
+
+        if ($s.css('background-image').indexOf(image_name) == -1) {
+            $s.css('background-image', 'url(img/art/' + image_name + '_'  + image_width + '.jpg)');
+        }
     }
 
 	function load_slideshow_data() {
