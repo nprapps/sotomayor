@@ -32,7 +32,7 @@ body { background-color: @slide-bg-color }
 	:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	.branding { 
 		display: inline-block; 
-		padding-right: 30px;
+		padding-right: 21px;
 		padding-top: 15px;
 		float: left;
 		cursor: pointer;
@@ -84,6 +84,16 @@ body { background-color: @slide-bg-color }
 	}
 }
 .slide-nav-item:hover { background-color: @nav-button-hover; }
+#credits-nav:hover { background-color: @nav-button-hover; }
+
+#credits-nav {
+    float: left;
+    color: white;
+    line-height: 50px;
+    padding: 0 15px;
+    border-right: 1px solid @nav-border;
+    cursor: pointer;
+}
 
 .nav-btn  { 
 	color: @nav-text-color;
@@ -208,7 +218,7 @@ body { background-color: @slide-bg-color }
 	a { padding: 0; display: inline; border: none; }
 	a:hover, a.active { background-color: none; }
 }
-#browse-btn { float: left; }
+#browse-btn { float: left; display:none; }
 #browse-btn.active { background-color: @nav-button-color; }
 
 
@@ -384,7 +394,6 @@ body { background-color: @slide-bg-color }
 	}
 	#list-nav .browse-slide  { width: 20%; }
 	#list-nav .browse-slide.browse26 { width: 100%; float: none; }
-    #browse-btn { display: none; }
 	#list-nav-end .browse-slide { height: 55px; }
 }
 @media (max-width: 979px) {
@@ -404,10 +413,13 @@ body { background-color: @slide-bg-color }
 	#list-nav-end .browse-slide { width: 33%; float: left; }
 }
 @media (max-width: 767px) {
+    body { padding:0; }
 	#audio { width: 101px; }
 	.jp-audio { width: auto; }
 	.jp-progress-container { display: none; }
-	#audio-navbar .branding h2 { background-position: -129px 0; width: 113px; }
+    #browse-btn { display: block; }
+    #credits-nav { display:none; }
+/*    #audio-navbar .branding h2 { background-position: -129px 0; width: 113px; }*/
 	.jp-current-time { border-left: none; }
 	.nav-btn.back-next { padding-left: 0; padding-right: 0; width: 40px; }
 
@@ -450,8 +462,8 @@ body { background-color: @slide-bg-color }
 	#list-nav-end .browse-slide { width: 50%; float: left; height: 60px; }
 }
 @media (max-width: 480px) {
-	#audio-navbar { padding-left: 0; }
-	#audio-navbar .branding { display: none; }
+/*    #audio-navbar { padding-left: 0; }*/
+/*    #audio-navbar .branding { display: none; }*/
 	.panel-bg { height: 300px; position: relative; top: auto; left: auto; }
 	.panel-description { 
 		position: relative; bottom: auto; left: auto; top: auto; right: auto;

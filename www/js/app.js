@@ -17,6 +17,7 @@ $(document).ready(function() {
     var $slide_list = $('#list-nav');
     var $slide_list_end = $('#list-nav-end');
 	var $slide_nav = $('#slide-nav');
+    var $credits_nav = $('#credits-nav')
 	var $next = $('#next-btn');
 	var $back = $('#back-btn');
     var $audio_nav = $('#audio-navbar');
@@ -108,11 +109,12 @@ $(document).ready(function() {
         } else {
             play_slide(id);
         }
-        
-        //show chapter title in nav
-        current_chapter = slideshow_data[id]['chapter'];
-        $("#chapter-title").text(current_chapter);
 		
+        //TODO:deal w/ index slide
+        //show chapter title in nav
+        // current_chapter = slideshow_data[id]['chapter'];
+        // $("#chapter-title").text(current_chapter);
+        
         return false; 
     }
 
@@ -167,17 +169,12 @@ $(document).ready(function() {
                         chapter['photo1_name'] = context['photo1_name'];
                         //write down previous chapter length
                         last_chapter['length'] = chapter['start'] - last_chapter['start'];
-                        //TODO:kill console.log
-                        // console.log(last_chapter);
                         //this chapter is now the last chapter
                         last_chapter = chapter;
                         chapters.push(chapter);
                     }
                 } else {
                     //first chapter
-                    
-                    //TODO:kill console.log
-                    // console.log(context['chapter']);
                     chapter['name'] = context['chapter'];
                     chapter['start'] = 0;
                     chapter['photo1_name'] = context['photo1_name'];
@@ -187,16 +184,10 @@ $(document).ready(function() {
             });
             //set very last chapter width
             chapters[chapters.length - 1]['length'] = audio_length - chapters[chapters.length - 1]['start'];
-            
-            //TODO:kill console.log
-            //console.log(chapters); 
-            
             //Render chapter nav
             $.each(chapters, function(k,v) {
                 var chapter = v;
                 chapter['width'] = 100 * parseFloat(chapter['length']) / audio_length;
-                //TODO:kill console.log
-                console.log(chapter);
                 browse_output += JST.browse(chapter);
                 audio_output += JST.slidenav(chapter);
                 endlist_output += JST.endlist(chapter);           
@@ -243,18 +234,11 @@ $(document).ready(function() {
                 }
 			});
 
-            // TODO: put index next to nav, not in nav
-            //             // Append "credits chapter"
-            // browse_output += JST.browse({
-            //                 'id': num_slides + 1,
-            //                 'chapter': 'Index & Credits'
-            //             });
-
-            // TODO: change this too?
-            // audio_output += JST.slidenav({
-            //     'id': num_slides + 1,
-            //     'chapter': 'Index & Credits'
-            // });
+            // Append credits to drop-down nav
+            browse_output += JST.browse({
+                'id': num_slides + 1,
+                'name': 'Index & Credits'
+            });
 
 			$titlecard.after(slide_output);
 			$slide_nav.append(audio_output);
@@ -265,14 +249,12 @@ $(document).ready(function() {
 			// rename the closing slides with the correct ID numbers
 			var end_id = num_slides - 1;
 			var end_cue = audio_length;
-			$('#send').attr('id','s' + end_id);
 			$('#panelend').attr('id','panel' + end_id);
-
 			slideshow_data.push({
 				id: end_id,
 				cue: end_cue
 			});
-
+            
 			if (audio_supported) {
 				// Popcorn cuepoint for opening slide
 				pop.code({
@@ -311,6 +293,10 @@ $(document).ready(function() {
 				var id = parseInt($(this).attr('data-id'));
                 goto_slide(id);
                 slide_list_toggle('close');
+            });
+            
+            $credits_nav.click(function(){
+               goto_slide(end_id); 
             });
 	
 	        $slide_list_end.find('a.slidelink').click(function() {
