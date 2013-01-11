@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	/* VARS */
 	var active_slide = 0;
-	var audio_length = 686; // TODO: Pass in dynamically somehow?
+	var audio_length = 687; // TODO: Pass in dynamically somehow?
 	var num_slides = 0;
 	var slideshow_data = [];
     var chapters = [];
@@ -29,14 +29,6 @@ $(document).ready(function() {
 	var $titlecard = $('#panel0');
 	var $panels;
 	var $panel_images;
-	var $chapter_backgrounds = [ 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/start.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter1.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter2.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter3.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter4.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter5.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter6.jpg',
-								 'http://www.npr.org/assets/multimedia/2013/soto/bkgd/chapter7.jpg' ];
 
     if (!audio_supported) {
         $audio.hide(); 
@@ -93,7 +85,6 @@ $(document).ready(function() {
     }
 
     function goto_slide(id) {
-    	console.log('goto_slide');
     	/*
     	 * Determine whether to shift to the next slide
     	 * with audio, or without audio.
@@ -110,11 +101,11 @@ $(document).ready(function() {
             play_slide(id);
         }
 		
-        //TODO:deal w/ index slide
         //show chapter title in nav
-        // current_chapter = slideshow_data[id]['chapter'];
-        // $("#chapter-title").text(current_chapter);
-        
+        current_chapter = slideshow_data[id]['chapter'];
+        $("#chapter-title").text(current_chapter);
+
+		swap_slide_bg();
         return false; 
     }
 
@@ -141,6 +132,29 @@ $(document).ready(function() {
         } else {
             scroll_to_slide(id);
         }
+		swap_slide_bg();
+    }
+    
+    function swap_slide_bg() {
+    	if (active_slide == 0) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/start.jpg)');
+		} else if (active_slide >= 1 && active_slide < 15) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter1.jpg)');
+		} else if (active_slide >= 15 && active_slide < 21) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter2.jpg)');
+		} else if (active_slide >= 21 && active_slide < 34) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter3.jpg)');
+		} else if (active_slide >= 34 && active_slide < 42) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter4.jpg)');
+		} else if (active_slide >= 42 && active_slide < 46) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter5.jpg)');
+		} else if (active_slide >= 46 && active_slide < 53) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter6.jpg)');
+		} else if (active_slide >= 53 && active_slide < 61) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter7.jpg)');
+		} else if (active_slide >= 61) {
+			$s.css('background-image', 'url(http://media.npr.org/assets/multimedia/2013/soto/bkgd/chapter7.jpg)');
+    	}
     }
 
 	function load_slideshow_data() {
@@ -252,7 +266,8 @@ $(document).ready(function() {
 			$('#panelend').attr('id','panel' + end_id);
 			slideshow_data.push({
 				id: end_id,
-				cue: end_cue
+				cue: end_cue,
+                chapter: ''
 			});
             
 			if (audio_supported) {
