@@ -2,7 +2,7 @@
 
 import os
 
-PROJECT_NAME = 'sotomayor'
+PROJECT_NAME = 'sotomayor-family-photos'
 DEPLOYED_NAME = PROJECT_NAME 
 
 PRODUCTION_S3_BUCKETS = ['apps.npr.org', 'apps2.npr.org']
