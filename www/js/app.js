@@ -43,8 +43,8 @@ $(document).ready(function() {
         $player.jPlayer({
             ready: function () {
                 $(this).jPlayer('setMedia', {
-                    mp3: "http://apps.npr.org/sotomayor/narration.mp3",
-                    oga: "http://apps.npr.org/sotomayor/narration.ogg"
+                    mp3: "http://apps.npr.org/sotomayor-family-photos/narration.mp3",
+                    oga: "http://apps.npr.org/sotomayor-family-photos/narration.ogg"
                 }).jPlayer("pause");
 
                 load_slideshow_data();
