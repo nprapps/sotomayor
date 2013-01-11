@@ -89,7 +89,8 @@ $(document).ready(function() {
     	 * Determine whether to shift to the next slide
     	 * with audio, or without audio.
     	 */
-    	active_slide = parseInt(id);
+        id = parseInt(id);
+    	active_slide = id;
 
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
@@ -112,6 +113,8 @@ $(document).ready(function() {
         /*
          * Scroll horizontally to the correct slide position.
          */
+        id = parseInt(id);
+
         $.smoothScroll({
             direction: 'left',
             scrollElement: $s,
@@ -327,7 +330,7 @@ $(document).ready(function() {
 
             resize_slideshow();
             
-//            scroll_to_slide(26);
+//            scroll_to_slide(51);
 		});
 	}
 	
