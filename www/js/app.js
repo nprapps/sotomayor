@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	/* VARS */
 	var active_slide = 0;
-	var audio_length = 687; // TODO: Pass in dynamically somehow?
+	var audio_length = 686; // TODO: Pass in dynamically somehow?
 	var num_slides = 0;
 	var slideshow_data = [];
     var chapters = [];
