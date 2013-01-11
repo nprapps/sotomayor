@@ -13,10 +13,9 @@ with open('data/slides.csv') as f:
 
 slides = []
 
-# Skip header AND opening slide
 for row in rows[2:]:
     slide = {
-        'cue': int(row[0]),
+        'cue': float(row[0]),
         #'cue2': int(row[1]),
         #'cue3': int(row[2]),
         #'photo1_url': row[3],
