@@ -282,8 +282,6 @@ $(document).ready(function() {
             $panel_images = $panels.find('.panel-bg');
 
             resize_slideshow();
-
-			goto_slide(50);
 		});
 	}
 	
