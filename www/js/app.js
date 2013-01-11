@@ -117,7 +117,6 @@ $(document).ready(function() {
         active_slide = id;
         
         //show chapter title in nav
-        console.log(slideshow_data[id]);
         if(slideshow_data[id]) {
             current_chapter = slideshow_data[id]['chapter'];
             $("#chapter-title").text(current_chapter);
