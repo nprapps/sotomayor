@@ -15,15 +15,6 @@
 
 {% block content %}
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 <div id="audio-navbar">
 	<div class="branding">
 		<h2><a href="http://www.npr.org" title="Return to NPR.org">NPR</a></h2>
@@ -90,9 +81,8 @@
                     <p>"We are all limited, highly imperfect beings, worthy in some dimensions, deficient in others, and if we would understand how any of our connections survive, we would do well to look first to what is good in each of us."</p>
                     <h3>Pass it on</h3>
                     <div id="share-buttons">
-                        <div class="fb-like" data-href="http://apps.npr.org/music-memoriam-2012/" data-send="false" data-width="300" data-show-faces="false" data-font="arial" data-colorscheme="dark"></div>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-via="nprmusic">Tweet</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        <li class="twitter"><a rel="external" href="http://twitter.com/share?text=Supreme+Court+Justice+Sonia+Sotomayor+shares+her+photos+and+her+story+with+@nprnews.&amp;url=http%3A%2F%2Fapps.npr.org%2Fsotomayor-family-photos%2F" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Twitter In Navbar', 'Bob\'s Concert Tickets']);">Share This Page On Twitter</a></li>
+                        <li class="facebook"><a rel="external" href="http://www.facebook.com/sharer/sharer.php?t=Supreme+Court+Justice+Sonia+Sotomayor+shares+her+photos+and+her+story+with+NPR.&amp;u=http%3A%2F%2Fapps.npr.org%2Fsotomayor-family-photos%2F" alt="Share on Facebook" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Facebook In Navbar', 'Bob\'s Concert Tickets']);">Like This Page On Facebook</a></li>
                     </div>
 					<h3>Return to a chapter</h3>
 					<div id="list-nav-end"></div>
