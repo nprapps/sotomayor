@@ -29,7 +29,7 @@ body { background-color: @slide-bg-color }
 	border-top: 1px solid @nav-border;
 	border-bottom: 1px solid @nav-border;
 	
-	:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	&:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	.branding { 
 		display: inline-block; 
 		padding-right: 21px;
@@ -351,8 +351,7 @@ body { background-color: @slide-bg-color }
 		font: 16px/1.7 Arial, Helvetica, sans-serif;
 		color: #ddd;
 	}
-	
-	.quote { 
+	.quote {
 		font: 36px/1.2 Goergia, serif; 
 		color: #999;
 		padding: 10px 15px 0 44px;
@@ -384,29 +383,61 @@ body { background-color: @slide-bg-color }
 	max-width: 725px;
 	margin: 60px auto 0 auto;
 	background: @shade-bg;
-	border: 2px solid rgba(60,60,60,.6);
-	border-radius: 6px;
-	padding: 30px;
+	padding: 33px;
 	color: @text-gray;
 	text-decoration: none;
 	text-shadow: @shadow;
 	
+	&:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	h1 {
-		//background: url('@{img-root}/hed-in-memoriam.png') no-repeat;
-		height: 73px;
-		//text-indent: -9999px;
-		overflow: hidden;
+		font: normal 46px/1.2 Georgia, serif;
+		color: #ddd;
+		margin-bottom: 33px;
 	}
-	h2 {
-		font: normal normal 30px/1.5 Georgia, serif;
-		color: #fff;
-		margin-top: 25px;
-		margin-bottom: 0;
+	p.quote {
+		border-top: 1px solid #555;
+		border-bottom: 1px solid #555;
+		font: 36px/1.2 Goergia, serif; 
+		color: #999;
+		padding: 33px 15px 33px 44px;
+		position: relative;
+		margin: 0;
+		
+		span {
+			font-size: 74px;
+			display: block;
+			position: absolute;
+			left: -1px;
+			top: 16px;
+			color: #ddd;
+			font-weight: bold;
+		}
+	}
+	p.intro {
+		font: 16px/1.5 Arial, Helvetica, sans-serif;
+		color: #bbb;
+		margin-top: 22px;
+		margin-bottom: 11px;
+	}
+	h2 { // play button
+		font: bold 14px/44px Arial, Helvetica, sans-serif;
+		text-transform: uppercase;
+		color: @nav-text-color;
+		background-color: @nav-button-color;
+		width: 100px;
+		text-align: center;
+		padding: 0 22px;
+		margin: 22px 0 0 11px;
 		outline: none;
+		float: right;
 	}
-	h2:hover { color: @text-gray; }
-	h5, p { font: italic normal 24px/1.5 Georgia, serif; }
+	h2:hover { 
+		background-color: @nav-button-hover;
+		color: @nav-text-hover;
+	}
 }
+
+
 .panel-end {
 	text-shadow: @shadow;
 	overflow-x: hidden;
