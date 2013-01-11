@@ -383,13 +383,21 @@ body { background-color: @slide-bg-color }
 	background: @slide-bg-color url('@{img-root}/black_thread.png') repeat;
 	/* Background pattern via Subtle Patterns: http://subtlepatterns.com/black-thread/ */
 }
+#title {
+	height: 100%%;
+}
+#title .panel-inner {
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+}
 #title-button {
 	display: block;
-	width: 80%;
-	max-width: 725px;
-	margin: 60px auto 0 auto;
+	width: 90%;
+	max-height: 85%;
+	padding: 5%;
+	margin-top: 5%;
 	background: @shade-bg;
-	padding: 33px;
 	color: @text-gray;
 	text-decoration: none;
 	text-shadow: @shadow;
@@ -397,7 +405,7 @@ body { background-color: @slide-bg-color }
 	
 	&:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	h1 {
-		font: normal 32px/1.2 Georgia, serif;
+		font: normal 28px/1.2 Georgia, serif;
 		color: #f4f1e3;
 		margin-bottom: 11px;
 	}
@@ -407,8 +415,23 @@ body { background-color: @slide-bg-color }
 		margin-bottom: 22px;
 	}
 	p.intro {
-		font: 14px/1.5 Arial, Helvetica, sans-serif;
+		font: 13px/1.5 Arial, Helvetica, sans-serif;
 		color: #808080;
+	}
+	.img-outer {
+		width: 60%;
+		height: 100%;
+		float: right;
+		margin-left: 22px;
+	}
+	.img-wrap {
+		padding: 7px;
+		background-color: #f4f1e3;
+	}
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 	h3 { // play button
 		font: bold 14px/44px Arial, Helvetica, sans-serif;
@@ -419,19 +442,13 @@ body { background-color: @slide-bg-color }
 		text-align: center;
 		padding: 0 22px;
 		outline: none;
-		float: right;
+		float: left;
 		clear: both;
 		margin: -44px 0 0 0;
 	}
 	h3:hover { 
 		background-color: @nav-button-hover;
 		color: @nav-text-hover;
-	}
-	img {
-		display: block;
-		float: left;
-		border: 10px solid #f4f1e3;
-		margin-right: 22px;
 	}
 }
 
@@ -489,16 +506,24 @@ body { background-color: @slide-bg-color }
 	#list-nav .browse-slide  { width: 20%; }
 	#list-nav .browse-slide.browse26 { width: 100%; float: none; }
 	#list-nav-end .browse-slide { height: 55px; }
+
+	#title .panel-inner {
+		width: 80%;
+		height: 80%;
+		margin: 0 auto;
+	}
+	#title-button {
+		h1 { font-size: 32px; }
+		h2 { margin-bottom: 33px; }
+		p.intro { font-size: 14px; }
+		.img-outer { width: 66%; }
+	}
 }
 @media (max-width: 979px) {
     #slideshow { background-image: url('../img/art/start_979.jpg'); }
 	.jp-audio { width: 271px; }
 	.jp-progress-container { width: 225px; }
 	
-	#title-button { 
-		img { width: 60%; height: auto; }
-	}
-
 	.panel-description { 
 		h2 { font-size: 42px; }
 		p { font-size: 16px; }
@@ -510,6 +535,11 @@ body { background-color: @slide-bg-color }
 		.browse-slide.browse26 { width: 67%; }
 	}
 	#list-nav-end .browse-slide { width: 33%; float: left; }
+	
+	#title-button {
+		h1 { font-size: 22px; }
+		p.intro { font-size: 12px; }
+	}
 }
 @media (max-width: 767px) {
     body { padding:0; }
@@ -522,18 +552,19 @@ body { background-color: @slide-bg-color }
 	.jp-current-time { border-left: none; }
 	.nav-btn.back-next { padding-left: 0; padding-right: 0; width: 40px; }
 
-	.panelbg,
-	.panel-inner {
+	#title .panel-inner {
 		height: 100%;
+		width: 100%;
 	}
-	#title-button {  
+	#title-button {
 		width: auto;
 		height: 100%;
-		padding-top: 0;
-		padding-bottom: 0;
+		max-height: none;
+		padding: 22px;
 		margin: 0;
-		
-		h1 { padding-top: 33px; }
+
+		h1 { font-size: 32px; }
+		h3 { margin-top: 22px; clear: none; }
 	}
 
 	.panel-description { 
@@ -568,8 +599,8 @@ body { background-color: @slide-bg-color }
 	#list-nav-end .browse-slide { width: 50%; float: left; height: 60px; }
 	#title-button { 
 		h1 { font-size: 26px; }
-		img { width: 50%; height: auto; }
 		p.intro { font-size: 12px; }
+		.img-outer { width: 50%; height: 90%; }
 	}
 }
 @media (max-width: 480px) {
@@ -597,10 +628,10 @@ body { background-color: @slide-bg-color }
 		.browse-slide a { display: table-cell; width: 150px; vertical-align: middle; height: 40px; padding-top: 0; padding-bottom: 0; }
 	}
 	#title-button { 
-		img { width: 96%; height: auto; border-width: 2%; margin: 0 auto; float: none; margin-bottom: 22px; }
 		h1 { font-size: 30px; }
 		h3 { margin-top: 22px; }
 		p.intro { font-size: 14px; }
+		.img-outer { float: none; width: 100%; height: auto; margin-bottom: 22px; margin-left: 0; }
 	}
 	
 	#slideshow { background: none; }
