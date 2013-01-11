@@ -335,6 +335,8 @@ $(document).ready(function() {
             $panel_images = $panels.find('.panel-bg');
 
             resize_slideshow();
+            
+//            scroll_to_slide(12);
 		});
 	}
 	
