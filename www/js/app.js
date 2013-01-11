@@ -101,7 +101,6 @@ $(document).ready(function() {
             play_slide(id);
         }
 
-		swap_slide_bg();
         return false; 
     }
 
@@ -122,6 +121,8 @@ $(document).ready(function() {
             $("#chapter-title").text(current_chapter);
         }
 
+		swap_slide_bg();
+
         return false;
     }
 
@@ -134,8 +135,6 @@ $(document).ready(function() {
         } else {
             scroll_to_slide(id);
         } 
-    
-		swap_slide_bg();
     }
     
     function swap_slide_bg() {
@@ -289,8 +288,7 @@ $(document).ready(function() {
 					onStart: function( options ) {         
 						scroll_to_slide(0); 
 						return false;
-					},
-					onEnd: function( options ) { }
+					}
 				});
 				// Popcorn cuepoint for closing slide
 				pop.code({
@@ -299,8 +297,7 @@ $(document).ready(function() {
 					onStart: function( options ) {         
 						scroll_to_slide(end_id); 
 						return false;
-					},
-					onEnd: function( options ) { }
+					}
 				});
 			}
 
@@ -426,15 +423,19 @@ $(document).ready(function() {
     $(document).keydown(function(ev) {
         if (ev.which == 37) {
             goto_previous_slide();
+            return false;
         } else if (ev.which == 39) {
             goto_next_slide();
+            return false;
         } else if (ev.which == 32 && audio_supported) {
             if ($player.data().jPlayer.status.paused) {
                 $player.jPlayer('play');
             } else {
                 $player.jPlayer('pause');
             }
+            return false;
         }
-        return false;
+
+        return true;
     });
 });
