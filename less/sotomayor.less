@@ -402,14 +402,14 @@ body { background-color: @slide-bg-color }
 	p.quote {
 		border-top: 1px solid #555;
 		border-bottom: 1px solid #555;
-		font: 36px/1.2 Goergia, serif; 
+		font: 34px/1.2 Goergia, serif; 
 		color: #999;
 		padding: 33px 15px 33px 44px;
 		position: relative;
 		margin: 0;
 		
 		span {
-			font-size: 74px;
+			font-size: 72px;
 			display: block;
 			position: absolute;
 			left: -1px;
@@ -419,10 +419,10 @@ body { background-color: @slide-bg-color }
 		}
 	}
 	p.intro {
-		font: 16px/1.5 Arial, Helvetica, sans-serif;
-		color: #bbb;
-		margin-top: 22px;
-		margin-bottom: 11px;
+		font: 13px/1.5 Arial, Helvetica, sans-serif;
+		color: #aaa;
+		margin-top: 25px;
+		margin-bottom: 0;
 	}
 	h2 { // play button
 		font: bold 14px/44px Arial, Helvetica, sans-serif;
@@ -441,7 +441,6 @@ body { background-color: @slide-bg-color }
 		color: @nav-text-hover;
 	}
 }
-
 
 .panel-end {
 	text-shadow: @shadow;
@@ -500,6 +499,12 @@ body { background-color: @slide-bg-color }
 @media (max-width: 979px) {
 	.jp-audio { width: 271px; }
 	.jp-progress-container { width: 225px; }
+	
+	#title-button { 
+		width: 80%;
+
+		h1 { font-size: 40px; }
+	}
 
 	.panel-description { 
 		h2 { font-size: 42px; }
@@ -524,7 +529,10 @@ body { background-color: @slide-bg-color }
 	.jp-current-time { border-left: none; }
 	.nav-btn.back-next { padding-left: 0; padding-right: 0; width: 40px; }
 
-	#title-button {  width: auto; border: none; background: none; padding: 0; margin: 20px; }
+	#title-button {  
+		width: auto; 
+		margin-top: 22px;
+	}
 
 	.panel-description { 
 		h2 { font-size: 32px; }
@@ -540,10 +548,21 @@ body { background-color: @slide-bg-color }
 	#list-nav-end .browse-slide { height: 80px; }
 }
 @media (max-width: 640px) {
+	.panelbg,
+	.panel-inner {
+		height: 100%;
+	}
 	#title-button { 
-		h1 { background-image: url('@{img-root}/hed-in-memoriam-mobile.png'); height: 47px; }
-		h2 { font-size: 24px; }
-		h5, p { font-size: 18px; }
+		margin-top: 0;
+		height: 100%;
+		
+		h1 { font-size: 32px; }
+		p.quote {
+			font-size: 28px;
+			padding-left: 38px;
+			
+			span { font-size: 62px; }
+		}
 	}
 	.panel-description { 
 		bottom: 0; width: auto; padding-bottom: 15px;
