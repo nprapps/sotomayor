@@ -421,15 +421,19 @@ $(document).ready(function() {
     $(document).keydown(function(ev) {
         if (ev.which == 37) {
             goto_previous_slide();
+            return false;
         } else if (ev.which == 39) {
             goto_next_slide();
+            return false;
         } else if (ev.which == 32 && audio_supported) {
             if ($player.data().jPlayer.status.paused) {
                 $player.jPlayer('play');
             } else {
                 $player.jPlayer('pause');
             }
+            return false;
         }
-        return false;
+
+        return true;
     });
 });
