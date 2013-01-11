@@ -50,7 +50,7 @@ $(document).ready(function() {
                 load_slideshow_data();
             },
             ended: function (event) {
-                $(this).jPlayer("pause");
+                $(this).jPlayer("pause", audio_length);
             },
             swfPath: "js",
             supplied: "oga, mp3"
