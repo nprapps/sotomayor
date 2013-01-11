@@ -226,7 +226,7 @@ body { background-color: @slide-bg-color }
 #slideshow { 
 	color: #fff; position: relative; overflow: hidden;
 	background-color: @slide-bg-color;
-	background-image: url('http://media.npr.org/assets/multimedia/2013/soto/bkgd/start.jpg');
+	background-image: url('../img/art/start_1200.jpg');
 	-webkit-background-size: cover; -moz-background-size: cover; background-size: cover;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
@@ -487,6 +487,7 @@ body { background-color: @slide-bg-color }
 
 // MEDIA QUERIES
 @media (min-width: 1200px) {
+    #slideshow { background-image: url('../img/art/start_1200.jpg'); }
 	.jp-audio { width: 600px; }
 	.jp-progress-container { width: 493px; }
 	.panel-description { 
@@ -498,6 +499,7 @@ body { background-color: @slide-bg-color }
 	#list-nav-end .browse-slide { height: 55px; }
 }
 @media (max-width: 979px) {
+    #slideshow { background-image: url('../img/art/start_979.jpg'); }
 	.jp-audio { width: 271px; }
 	.jp-progress-container { width: 225px; }
 
@@ -541,7 +543,7 @@ body { background-color: @slide-bg-color }
 }
 @media (max-width: 640px) {
 	#title-button { 
-		h1 { background-image: url('@{img-root}/hed-in-memoriam-mobile.png'); height: 47px; }
+		h1 { /*background-image: url('@{img-root}/hed-in-memoriam-mobile.png');*/ height: 47px; }
 		h2 { font-size: 24px; }
 		h5, p { font-size: 18px; }
 	}
@@ -565,6 +567,7 @@ body { background-color: @slide-bg-color }
 @media (max-width: 480px) {
 /*    #audio-navbar { padding-left: 0; }*/
 /*    #audio-navbar .branding { display: none; }*/
+    #slideshow { background-image: url('../img/art/start_480.jpg'); }
 	.panel-bg { height: 300px; position: relative; top: auto; left: auto; }
 	.panel-description { 
 		position: relative; bottom: auto; left: auto; top: auto; right: auto;
