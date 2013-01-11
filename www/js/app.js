@@ -100,10 +100,6 @@ $(document).ready(function() {
         } else {
             play_slide(id);
         }
-		
-        //show chapter title in nav
-        current_chapter = slideshow_data[id]['chapter'];
-        $("#chapter-title").text(current_chapter);
 
 		swap_slide_bg();
         return false; 
@@ -119,6 +115,12 @@ $(document).ready(function() {
             scrollTarget: '#panel' + id
         });
         active_slide = id;
+        
+        //show chapter title in nav
+        if(slideshow_data[id]) {
+            current_chapter = slideshow_data[id]['chapter'];
+            $("#chapter-title").text(current_chapter);
+        }
 
         return false;
     }
@@ -131,7 +133,8 @@ $(document).ready(function() {
             $player.jPlayer('play', slideshow_data[id]['cue']);
         } else {
             scroll_to_slide(id);
-        }
+        } 
+    
 		swap_slide_bg();
     }
     
