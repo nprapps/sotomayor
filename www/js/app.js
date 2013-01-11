@@ -336,7 +336,7 @@ $(document).ready(function() {
 
             resize_slideshow();
             
-//            scroll_to_slide(12);
+//            scroll_to_slide(26);
 		});
 	}
 	
