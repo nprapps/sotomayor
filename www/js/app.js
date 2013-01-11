@@ -50,7 +50,7 @@ $(document).ready(function() {
                 load_slideshow_data();
             },
             ended: function (event) {
-                $(this).jPlayer("pause", audio_length);
+                $(this).jPlayer("pause", audio_length - 1);
             },
             swfPath: "js",
             supplied: "oga, mp3"
@@ -90,13 +90,17 @@ $(document).ready(function() {
     	 * with audio, or without audio.
     	 */
     	active_slide = parseInt(id);
+
         if (!audio_supported || $player.data().jPlayer.status.paused || slideshow_data[id] == undefined) {
             scroll_to_slide(id);
+            
             if (slideshow_data[id] != undefined) {
 				$player.jPlayer('pause', slideshow_data[id]['cue']);
-			} else if (id == (num_slides - 1)) {
-				$player.jPlayer('pause', audio_length);
-			}
+            }
+        } else if (id == (num_slides - 1)) {
+            scroll_to_slide(id);
+
+            $player.jPlayer('pause', audio_length - 1);
         } else {
             play_slide(id);
         }
