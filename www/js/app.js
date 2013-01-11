@@ -382,6 +382,7 @@ $(document).ready(function() {
 	 * Click actions
 	 */
 	$('#title-button').click(function() {
+        window.scrollTo(0, 0);
 		play_slide(1);
 	});
 	
