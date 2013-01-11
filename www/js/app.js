@@ -330,7 +330,7 @@ $(document).ready(function() {
 
             resize_slideshow();
             
-//            scroll_to_slide(26);
+//            scroll_to_slide(51);
 		});
 	}
 	
