@@ -250,10 +250,6 @@ $(document).ready(function() {
                 if (audio_supported) {
                 	var cue = v["cue"];
 
-                	if (k == 0) {
-                		cue += 1;
-                	}
-
                     // Popcorn cuepoint for this slide
                     pop.code({
                         start: cue,
@@ -289,15 +285,6 @@ $(document).ready(function() {
 			});
             
 			if (audio_supported) {
-				// Popcorn cuepoint for opening slide
-				pop.code({
-					start: 0,
-					end: .5,
-					onStart: function( options ) {         
-						scroll_to_slide(0); 
-						return false;
-					}
-				});
 				// Popcorn cuepoint for closing slide
 				pop.code({
 					start: end_cue,

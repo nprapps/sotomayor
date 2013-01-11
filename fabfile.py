@@ -246,14 +246,11 @@ def shiva_the_destroyer():
     Deletes the app from s3
     """
     with settings(warn_only=True):
-        s3cmd = 's3cmd del --recursive %s' % env
+        s3cmd = 's3cmd del --recursive %s'
         
         for bucket in env.s3_buckets:
             env.s3_bucket = bucket
             local(s3cmd % ('s3://%(s3_bucket)s/%(deployed_name)s' % env))
-
-        if env.get('alt_s3_bucket', None):
-            local(s3cmd % ('s3://%(alt_s3_bucket)s/%(deployed_name)s' % env))
 
         if env.get('deploy_to_servers', False):
             run('rm -rf %(path)s' % env)
