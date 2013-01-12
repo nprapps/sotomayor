@@ -328,7 +328,7 @@ $(document).ready(function() {
 
             resize_slideshow();
             
-//            scroll_to_slide(60);
+            scroll_to_slide(60);
 		});
 	}
 	
