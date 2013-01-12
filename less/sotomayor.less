@@ -3,7 +3,7 @@
 @slide-bg-color: #262626;
 @shade-bg: rgba(10,10,10,.7);
 @shadow: 1px 2px 10px rgba(32,32,32,.7);
-@text-gray: #8b9094;
+@text-gray: #888a90;
 @nav-border: #39393a;
 @audio-height: 50px;
 @nav-button-color: #343434;
@@ -217,7 +217,8 @@ body { background-color: @slide-bg-color }
 
 	h2, p { margin-left: 70px; }
 	img { margin-right: 0; }
-	a { padding: 0; display: inline; border: none; }
+	a { padding: 0; display: inline; border: none; display: block; }
+	a:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	a:hover, a.active { background-color: none; }
 }
 #browse-btn { float: left; display:none; }
@@ -371,10 +372,6 @@ body { background-color: @slide-bg-color }
 
 
 // TITLE AND CLOSING SCREENS
-.panel-end { 
-	background: @slide-bg-color url('@{img-root}/black_thread.png') repeat;
-	/* Background pattern via Subtle Patterns: http://subtlepatterns.com/black-thread/ */
-}
 #title {
 	height: 100%%;
 }
@@ -445,13 +442,23 @@ body { background-color: @slide-bg-color }
 }
 
 .panel-end {
+	background-color: @shade-bg;
 	text-shadow: @shadow;
 	overflow-x: hidden;
 	overflow-y: auto;
 	
 	.panel-wrap { padding: 20px; }
-	h3 { font-weight: normal; font-size: 18px; }
-	p { color: @text-gray; }
+	h3 { 
+		font: normal 18px/1.2 Arial, Helvetica, sans-serif; 
+		color: #ddd; 
+		text-transform: capitalize; 
+		margin-bottom: 11px;
+		margin-top: 33px;
+	}
+	h3:first-child { margin-top: 0; }
+	p { color: @text-gray; margin-top: 0;}
+	a, a:link, a:visited { color: #fff; font-weight: bold; }
+	a:hover, a:active { color: #aeb1b9; }
 }
 #list-nav-end {
 	margin-bottom: 20px;
