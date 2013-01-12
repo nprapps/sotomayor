@@ -159,17 +159,15 @@ $(document).ready(function() {
             image_name = 'chapter1';
 		} else if (active_slide >= 15 && active_slide < 21) {
             image_name = 'chapter2';
-		} else if (active_slide >= 21 && active_slide < 34) {
+		} else if (active_slide >= 21 && active_slide < 33) {
             image_name = 'chapter3';
-		} else if (active_slide >= 34 && active_slide < 42) {
-            image_name = 'chapter4';
-		} else if (active_slide >= 42 && active_slide < 46) {
+		} else if (active_slide >= 33 && active_slide < 37) {
             image_name = 'chapter5';
-		} else if (active_slide >= 46 && active_slide < 53) {
+		} else if (active_slide >= 37 && active_slide < 44) {
+            image_name = 'chapter4';
+		} else if (active_slide >= 44 && active_slide < 50) {
             image_name = 'chapter6';
-		} else if (active_slide >= 53 && active_slide < 61) {
-            image_name = 'chapter7';
-		} else if (active_slide >= 61) {
+		} else if (active_slide >= 50) {
             image_name = 'chapter7';
     	}
 
