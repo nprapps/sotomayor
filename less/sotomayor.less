@@ -513,6 +513,11 @@ body { background-color: @slide-bg-color; -webkit-font-smoothing: antialiased; }
 #list-nav-end {
 	margin-bottom: 20px;
 
+/*@nav-button-color: #343434;
+@nav-button-hover: #33363b;
+@nav-text-color: #88919a;
+@nav-text-hover: #b0b0b0; */
+
 	.browse-slide { 
 		line-height: 44px;
 		height: 44px;
@@ -520,20 +525,19 @@ body { background-color: @slide-bg-color; -webkit-font-smoothing: antialiased; }
 		width: 25%; 
 		float: left;
 		overflow: hidden;
+		margin-bottom: 2px;
+		
+		&:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	}
-	.browse-slide:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	img { 
 		float: left;
 		width: 60px;
 		height: 44px;
-		border: 1px solid @nav-border;
 	}
-	h2 { font: bold 13px/44px Arial, Helvetica, sans-serif; margin: 0 0 0 70px; color:#fff; }
+	h2 { font: bold 13px/44px Arial, Helvetica, sans-serif; margin: 0 0 0 70px; color: @nav-text-color; }
 	p { font: 12px/1.4 Arial, Helvetica, sans-serif; margin: 0 0 0 70px; }
-	a { color: @nav-text-color; }
-	a:hover, a.active { color: @nav-text-hover; text-decoration: none; }
-	a:hover img, a.active img { border-color: @text-gray; }
-	.browse-slide:hover { background-color: @nav-button-color; }
+	a { color: @nav-text-color; background-color: @nav-button-color; text-shadow: none; }
+	a:hover, a:active { color: @nav-text-hover; background-color: @nav-button-hover; text-decoration: none; }
 }
 #list-nav-end:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
